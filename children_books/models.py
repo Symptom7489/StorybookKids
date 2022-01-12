@@ -22,6 +22,7 @@ class Page(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     img_upload = models.ImageField()
+
     page_number = models.IntegerField()
 
 
