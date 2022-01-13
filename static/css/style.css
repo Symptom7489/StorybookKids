@@ -57,19 +57,73 @@ body {
 
 /****************** Carousel Items **********************/
 
-.carousel-image {
-    width: 50%;
-    height: 50%;
+.carousel {
+    position: relative;
+    height:600px;
+    width: 80%;
+    margin: 0 auto;
 }
 
-.carousel {
-    margin:auto;
-    width: 100%;
-    height: auto%;
-    text:center;
-  }
+.carousel-track-container {
+    background: lightblue;
+    height:100%;
+    positioin:relative;
+}
 
-.carousel-control-next,
-.carousel-control-prev /*, .carousel-indicators */ {
-    filter: invert(100%);
+.carousel-track {
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+
+.carousel-slide {
+    position: absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 6px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-button-left {
+    left: -30px
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background:transparent;
+    border:0;
+    cursor: pointer;
+}
+
+.carousel-button-right {
+    z-index: 1;
+    position: absolute;
+    margin-right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background:transparent;
+    border:0;
 }

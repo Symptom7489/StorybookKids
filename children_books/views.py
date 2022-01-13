@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from .models import Page
+from .forms import PageModelForm
 
 class PageListView(ListView):
 
@@ -12,3 +13,8 @@ class PageListView(ListView):
         context['first'] = 'Ryan'
         return context
 
+class PageFormView(CreateView):
+    template_name = 'page-form.html'
+    model = Page
+    form_class = PageModelForm
+    success_url = 'success.html'
