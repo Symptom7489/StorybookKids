@@ -1,15 +1,14 @@
 from django.contrib import admin
-from . import models
+from .models import Book, Author, Page
 
-@admin.register(models.Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', )
+    pass
+admin.site.register(Author, AuthorAdmin)
 
-
-@admin.register(models.Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title',)
+    list_display = ('author', 'title', 'genre')
+admin.site.register(Book, BookAdmin)
 
-@admin.register(models.Page)
 class PageAdmin(admin.ModelAdmin):
     list_display = ('author', 'book', 'page_number')
+admin.site.register(Page, PageAdmin)

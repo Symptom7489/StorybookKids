@@ -2,42 +2,20 @@
 
 {% block content %}
 
+
     <div class="carousel">
-        <button class="carousel-button-left">
-            <i class="arrow left"></i>
-        </button>
         <div class="carousel-track-container">
             <ul class="carousel-track">
                 {% for object in object_list %}
 
                 <li class="carousel-slide">
-                    <img class="carousel-image" src="{{ object.img_upload.url  }}" alt="">
+                    <img class="carousel-image" src="{{ object.page_image.url  }}" alt="">
                 </li>
                 {% endfor %}
             </ul>
         </div>
-        <button class="carousel-button-right"><i class="arrow right"></i></button>
-    
-    <div class="carousel-nav">
-        <buttton class="carousel-indicator"></buttton>
-        <buttton class="carousel-indicator"></buttton>
-        <buttton class="carousel-indicator"></buttton>
-    </div>
+
     </div>
 
 {% endblock content %}
 
-{#{% for object in object_list %}#}
-{#    {% if object.page_number == 1 %}#}
-{##}
-{#    <div class="align-items-center carousel-item active">#}
-{#      <img class="carousel-image" src="{{ object.img_upload.url }}" class="d-block w-100" alt="...">#}
-{#    </div>#}
-{#    {% else %}#}
-{##}
-{#        <div class="align-items-center carousel-item">#}
-{#      <img class="carousel-image" src="{{ object.img_upload.url }}" class="d-block w-100" alt="...">#}
-{#    </div>#}
-{#    {% endif %}#}
-{##}
-{#{% endfor carousel %}#}
