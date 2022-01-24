@@ -2,13 +2,14 @@ from django.shortcuts import render
 from children_books.models import Page, Book, Author
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import PageSerializer, UserSerializer, BookSerializer, AuthorSerializer
+from .serializers import RegistrationSerializer, UserSerializer, BookSerializer, AuthorSerializer, PageSerializer
 from django.contrib.auth.models import User
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 class PageViewSet(viewsets.ModelViewSet):
     queryset = Page.objects.all()
     serializer_class = PageSerializer
-    permission_classes =[permissions.IsAuthenticated]
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -16,14 +17,29 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes =[permissions.IsAuthenticated]
 
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
-    permission_classes =[permissions.IsAuthenticated]
+
+@api_view(['POST',])
+def registration_view(request):
+
+    if request.method == 'POST':
+        serializer = RegistrationSerializer(data=request.data)
+        data = {}
+        if serializer.is_valid():
+            author = serializer.save()
+            data['response'] = "successfully registered"
+            data['email'] = "successfully registered"
+            data['username'] = "successfully registered"
+        else:
+            data = serializer.errors
+        return Response(data)
+
+
+

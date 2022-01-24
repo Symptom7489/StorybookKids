@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from author import views as author_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('children_books.urls')),
-    path('api/', include('storybook_api.urls')),
+    path('api/', include('children_books.api.urls')),
+    path('register/', author_views.register, name='register'),
+    path('login/', author_views.login, name='login'),
+
 ]
 
 if settings.DEBUG:
