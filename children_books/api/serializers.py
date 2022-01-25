@@ -10,12 +10,15 @@ class PageSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'groups']
+        fields = ['username', 'email', 'groups', 'first_name', 'last_name', 'password']
+
 
 class AuthorSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Author
-        fields = ['first_name', 'last_name', 'pen_name', 'email']
+
+        fields = ['id', 'pen_name', 'first_name', 'last_name', 'email']
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:

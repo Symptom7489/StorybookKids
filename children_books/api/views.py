@@ -26,6 +26,7 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
+
 @api_view(['POST',])
 def registration_view(request):
 

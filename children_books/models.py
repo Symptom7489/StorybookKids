@@ -1,15 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+
 class Author(models.Model):
-    email = models.EmailField(max_length=40, null=True)
-    first_name = models.CharField(max_length=25, unique=True)
-    last_name = models.CharField(max_length=25, unique=True)
-    pen_name = models.CharField(max_length=25, unique=True)
-
-
-    def __str__(self):
-        return f'{self.first_name}  {self.last_name}'
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    last_name = models.CharField(max_length=30)
+    pen_name = models.CharField(max_length=25)
+    first_name = models.CharField(max_length=25)
+    email = models.EmailField(max_length=25)
 
 class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -23,5 +22,3 @@ class Page(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     page_image = models.ImageField()
     page_number = models.IntegerField()
-
-

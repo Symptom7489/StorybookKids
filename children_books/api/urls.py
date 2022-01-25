@@ -5,7 +5,7 @@ from children_books.api.views import registration_view
 
 router = routers.DefaultRouter()
 router.register(r'book', views.BookViewSet)
-router.register(r'author', views.AuthorViewSet)
+router.register(r'author', views.AuthorViewSet, basename='AuthorViewSet')
 router.register(r'page', views.PageViewSet)
 router.register(r'users', views.UserViewSet)
 
