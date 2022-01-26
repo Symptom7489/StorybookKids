@@ -1,6 +1,7 @@
 from children_books.models import Page, Author, Book
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 class PageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,8 +11,25 @@ class PageSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'groups', 'first_name', 'last_name', 'password']
+        fields = ['username', 'email', 'first_name', 'last_name', 'password']
 
+        def create(self, validated_data):
+            return User.objects.create_user(**validated_data)
+
+
+            # password = validated_data.pop('password')
+            # user = User(**validated_data)
+            # user.set_password(password)
+
+
+            # user = User(
+            #     is_superuser=validated_data['username']
+            # )
+            # user.set_password(validated_data['password'])
+
+
+            # user.save()
+            # return user
 
 class AuthorSerializer(serializers.ModelSerializer):
 

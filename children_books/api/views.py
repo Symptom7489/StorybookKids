@@ -12,9 +12,6 @@ class PageViewSet(viewsets.ModelViewSet):
     serializer_class = PageSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
